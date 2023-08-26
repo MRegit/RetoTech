@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Picos de Venta Inusuales{% endblock %}
+
+{% block content %}
+    <h1>Picos de Ventas Inusuales</h1>
+    <div class="row">
+        <div>
+            <div id="chartDemandTrends" class="chart"></div>
+        </div>
+        <div >
+            <table class="table table-striped rounded">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Fecha del Pico</th>
+                        <th>Comercio Afectado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for peak in peak_data %}
+                    <tr>
+                        <td>{{ peak.date }}</td>
+                        <td>{{ peak.affected_commerce }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Aquí también puedes agregar una tabla con detalles de los picos y comercios afectados si es necesario -->
+{% endblock %}

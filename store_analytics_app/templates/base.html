@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Título de la Página{% endblock %}</title>
+    <!-- Agrega aquí tus enlaces a archivos CSS y scripts JavaScript -->
+
+    <link rel="stylesheet" type="text/css" href="./../static/css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+    <div class="main-container">
+        <div class="sidebar">
+            <!-- Foto de perfil y nombre de usuario -->
+            <div class="profile">
+                <img src="{% static 'img/usuario.png' %}" alt="Foto de Perfil">
+                <p>Administrador</p>
+            </div>
+            
+            <!-- Opciones del menú lateral -->
+            <div class="menu">
+                <ul>
+                    <li><a href="{% url 'home' %}">Inicio</a></li>
+                    <li><a href="{% url 'sales_and_purchase_demand' %}">Picos de Venta Inusuales</a></li>
+                    <li><a href="{% url 'external_events' %}">Eventos Externos</a></li>
+                    <li><a href="{% url 'retention_rate' %}">Retención de Clientes</a></li>
+                    <li><a href="{% url 'outlier_summary' %}">Resumen de Outliers</a></li>
+                    <li><a href="{% url 'kpi' %}">Indicadores Clave de Rendimiento</a></li>
+                    <!-- Agrega aquí más opciones según tus vistas -->
+                </ul>
+            </div>
+        </div>
+        
+        <div class="content">
+            <!-- Contenido principal que cambiará según la vista seleccionada -->
+            <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/jquery"></script>
+            <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+            {% block content %}
+                {% include 'store_analytics_templates/home.html' %}
+            {% endblock %}
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+             <!-- Apache ECharts -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.1/echarts.min.js"></script>
+            <!-- Custom JS -->
+            <script src="{% static 'js/main.js' %}"></script>
+        </div>
+    </div>
+</body>
+</html>
+
